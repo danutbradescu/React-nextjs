@@ -29,8 +29,7 @@ const Cart = () => {
 
     toast.loading('Redirecting...');
 
-    stripe.redirectToCheckout({ sessionId: data.sessionId });
-
+    stripe.redirectToCheckout({ sessionId: data.id });
   }
 
   return (
@@ -42,20 +41,20 @@ const Cart = () => {
         onClick={() => setShowCart(false)}>
           <AiOutlineLeft />
           <span className="heading">Cosul tau</span>
-          <span className="cart-num-items">({totalQuantities} Produse)</span>
+          <span className="cart-num-items">({totalQuantities} produse)</span>
         </button>
 
         {cartItems.length < 1 && (
           <div className="empty-cart">
             <AiOutlineShopping size={150} />
-            <h3>Cosul tau este gol !</h3>
+            <h3>Cosul tau este gol</h3>
             <Link href="/">
               <button
                 type="button"
                 onClick={() => setShowCart(false)}
                 className="btn"
               >
-                Continue Shopping
+                Continua cumparaturile
               </button>
             </Link>
           </div>
@@ -99,7 +98,9 @@ const Cart = () => {
               <h3>Lei{totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type="button" className="btn" onClick={handleCheckout}>CUMPARA ACUM </button>
+              <button type="button" className="btn" onClick={handleCheckout}>
+                Plateste Acum
+              </button>
             </div>
           </div>
         )}
